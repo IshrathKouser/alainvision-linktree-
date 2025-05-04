@@ -4,18 +4,264 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AlainVision</title>
-  <meta name="description" content="AlainVision: Exploring Cyberpunk Realms & Futuristic AI Creations">
-  <meta property="og:title" content="AlainVision">
-  <meta property="og:description" content="🤖 Exploring Cyberpunk Realms & Futuristic AI Creations 🌐">
-  <meta property="og:image" content="LOGO Finalized.png">
-  <meta property="og:url" content="https://<your-username>.github.io/alainvision-linktree/">
-  <meta name="twitter:card" content="summary_large_image">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    /* STYLES OMITTED FOR BREVITY IN THIS PREVIEW (WILL BE INCLUDED IN FILE) */
+    :root {
+      --bg-dark: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      --bg-light: linear-gradient(to right, #e0e6c8, #beeff2);
+      --bg-future: linear-gradient(to right, #000000, #0f2027);
+
+      --card-dark: rgba(255, 255, 255, 0.06);
+      --card-light: rgba(241, 221, 183, 0.882);
+      --card-future: rgba(20, 20, 30, 0.9);
+
+      --text-dark: #ffffff;
+      --text-light: #111111;
+      --text-future: #00f2fe;
+
+      --link-dark: linear-gradient(to left, #ff6a00, #ee0979);
+      --link-light: linear-gradient(to right, #2193b0, #6dd5ed);
+      --link-future: linear-gradient(to right, #111fdb, #1bbbc4);
+
+      --hover-dark: linear-gradient(to left, #43e97b, #38f9d7);
+      --hover-light: linear-gradient(to right, #e9a444, #ef8562);
+      --hover-future: linear-gradient(to right, #7f00ff, #e100ff);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      min-height: 100vh;
+      transition: background 0.6s ease, color 0.4s ease;
+      padding: 1rem;
+    }
+
+    .container {
+      background: var(--card-dark);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+      transition: background 0.5s ease, box-shadow 0.4s ease;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--text-dark);
+      margin-bottom: 1rem;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+      text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+    }
+
+    .tagline {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+    }
+
+    .links a, .contact a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+      background: var(--link-dark);
+      transition: transform 0.3s, background 0.4s;
+      font-size: 1rem;
+    }
+
+    .links a:hover, .contact a:hover {
+      transform: translateY(-3px);
+      background: var(--hover-dark);
+    }
+
+    .links a img, .contact a img {
+      width: 20px;
+      height: 20px;
+      margin-right: 0.5rem;
+    }
+
+    .theme-toggle {
+      margin-top: 1.5rem;
+    }
+
+    .theme-toggle button {
+      background-color: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .theme-toggle button:hover {
+      transform: scale(1.2);
+    }
+
+    .contact {
+      margin-top: 1rem;
+    }
+
+    /* Themes */
+    body.light-theme {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    body.light-theme .container {
+      background: var(--card-light);
+    }
+
+    body.light-theme .links a,
+    body.light-theme .contact a {
+      background: var(--link-light);
+    }
+
+    body.light-theme .links a:hover,
+    body.light-theme .contact a:hover {
+      background: var(--hover-light);
+    }
+
+    body.light-theme h1,
+    body.light-theme .tagline {
+      color: var(--text-light);
+    }
+
+    body.future-theme {
+      background: var(--bg-future);
+      color: var(--text-future);
+    }
+
+    body.future-theme .container {
+      background: var(--card-future);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    }
+
+    body.future-theme .links a,
+    body.future-theme .contact a {
+      background: var(--link-future);
+    }
+
+    body.future-theme .links a:hover,
+    body.future-theme .contact a:hover {
+      background: var(--hover-future);
+    }
+
+    body.future-theme h1,
+    body.future-theme .tagline {
+      color: var(--text-future);
+    }
+
+    body.future-theme .theme-toggle button {
+      color: #00fff2;
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 1.3rem;
+      }
+
+      .links a {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- BODY CONTENT OMITTED FOR BREVITY (WILL BE INCLUDED IN FILE) -->
+  <div class="container">
+    <img src="LOGO Finalized.png" alt="AI Avatar" class="avatar" />
+    <h1>Welcome to AlainVision</h1>
+    <p class="tagline">🤖 Exploring Cyberpunk Realms & Futuristic AI Creations 🌐</p>
+
+    <div class="links">
+      <a href="https://www.youtube.com/@AlainVisionAI" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube" />
+        YouTube
+      </a>
+      <a href="https://www.instagram.com/AlainVision" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" />
+        Instagram
+      </a>
+      <a href="https://www.pinterest.com/AlainVision" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/pinterest.svg" alt="Pinterest" />
+        Pinterest
+      </a>
+      <a href="https://x.com/AlainVisionAI" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" />
+        X (Twitter)
+      </a>
+    </div>
+
+    <div class="contact">
+      <a href="mailto:alainvision@gmail.com">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" />
+        Contact Me
+      </a>
+    </div>
+
+    <div class="theme-toggle">
+      <button onclick="toggleTheme()" title="Switch Theme" id="theme-icon">
+        <span id="theme-symbol">🌙</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const themes = ['default', 'light', 'future'];
+    let currentTheme = 0;
+
+    function applyTheme(index) {
+      document.body.className = '';
+      const symbol = document.getElementById('theme-symbol');
+
+      if (themes[index] === 'light') {
+        document.body.classList.add('light-theme');
+        symbol.textContent = '☀️';
+      } else if (themes[index] === 'future') {
+        document.body.classList.add('future-theme');
+        symbol.textContent = '🤖';
+      } else {
+        symbol.textContent = '🌙';
+      }
+
+      localStorage.setItem('themeIndex', index);
+    }
+
+    function toggleTheme() {
+      currentTheme = (currentTheme + 1) % themes.length;
+      applyTheme(currentTheme);
+    }
+
+    (function () {
+      const saved = localStorage.getItem('themeIndex');
+      currentTheme = saved ? parseInt(saved) : 0;
+      applyTheme(currentTheme);
+    })();
+  </script>
 </body>
 </html>
